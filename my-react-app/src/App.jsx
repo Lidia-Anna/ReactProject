@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <div>
-        <h1>My first React Project</h1>
+        <h1>My first React Project hw50</h1>
       </div>
     </>
   )
