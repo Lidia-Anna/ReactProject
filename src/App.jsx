@@ -1,9 +1,19 @@
+import './App.css'
+import Header from './components/Header'
+import Sidebar from './components/Sidebar'
+import Main from './components/Main'
 function App() {
 
     return (
-        <div>
-            <h3>First Project</h3>
-        </div>
+        <>
+            <Header />
+            <div className="container">
+                <div className="row">
+                    <Sidebar />
+                    <Main />
+                </div>
+            </div>
+        </>
     );
 }
 
