@@ -1,8 +1,8 @@
+import MyButtonsCounter from "./components/MyButtonsCounter.jsx"
 function App() {
-
     return (
         <div>
-            <h3>First Project</h3>
+            <MyButtonsCounter />
         </div>
     );
 }
