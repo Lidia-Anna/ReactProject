@@ -1,8 +1,9 @@
+import ContactsApp from "./components/ContactsApp";
 function App() {
 
     return (
         <div>
-            <h3>First Project</h3>
+            < ContactsApp />
         </div>
     );
 }
