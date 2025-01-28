@@ -1,8 +1,9 @@
+import DynamicForm from './components/DynamicForm.jsx';
 function App() {
 
     return (
         <div>
-            <h3>First Project</h3>
+            <DynamicForm />
         </div>
     );
 }
