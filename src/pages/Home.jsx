@@ -7,15 +7,15 @@ const Home = () => {
 
     const handleNavigate = () => {
         // Програмна навігація на сторінку About
-        navigate('/about');
+        navigate('/posts');
     };
 
     return (
         <div>
-            <h1>Hello world</h1>
+            <h1>Home Page</h1>
             <p>Ласкаво просимо на демонстраційну сторінку проекту з React Router.</p>
             <Button variant="primary" onClick={handleNavigate}>
-                Перейти до About сторінки
+                Перейти до Blogs сторінки
             </Button>
         </div>
     );

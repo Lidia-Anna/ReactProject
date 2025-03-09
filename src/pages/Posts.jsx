@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Button, Form, ListGroup, Spinner } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
 
 const Posts = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -55,10 +57,12 @@ const Posts = () => {
             ) : (
                 <ListGroup>
                     {posts.map((post) => (
-                        <ListGroup.Item key={post.id}>
-                            <h5>{post.title}</h5>
-                            <p>{post.body}</p>
-                        </ListGroup.Item>
+                        <Card key={post.id} as={Link} to={`/posts/${post.id}`} className="text-decoration-none text-dark">
+                            <Card.Body>
+                                <Card.Title>{post.title}</Card.Title>
+                                <Card.Text>{post.body}</Card.Text>
+                            </Card.Body>
+                        </Card>
                     ))}
                 </ListGroup>
             )}
