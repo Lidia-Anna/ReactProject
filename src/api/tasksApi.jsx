@@ -7,8 +7,10 @@ export const tasksApi = createApi({
     endpoints: (builder) => ({
         getTasks: builder.query({
             query: () => 'tasks',
-            providesTags: (result = [], error, arg) =>
-                result.map(({ id }) => ({ type: 'Tasks', id })) || [{ type: 'Tasks', id: 'LIST' }],
+            providesTags: (result = [], error, arg) => [
+                { type: 'Tasks', id: 'LIST' },
+                ...result.map(({ id }) => ({ type: 'Tasks', id })),
+            ],
         }),
         addTask: builder.mutation({
             query: (newTask) => ({
