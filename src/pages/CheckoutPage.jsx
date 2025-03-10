@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, TextField, Button, Typography, MenuItem } from '@mui/material';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart } from '../features/cartSlice';
+import { addOrder } from '../features/ordersSlice';
 
 const CheckoutPage = () => {
     const [formData, setFormData] = useState({
@@ -13,6 +15,9 @@ const CheckoutPage = () => {
         paymentMethod: '',
     });
     const [submitted, setSubmitted] = useState(false);
+    const dispatch = useDispatch();
+    const cartItems = useSelector(state => state.cart.items);
+    const total = cartItems.reduce((sum, item) => sum + item.product.price * item.quantity, 0).toFixed(2);
 
     const handleChange = (e) => {
         setFormData(prev => ({
@@ -24,14 +29,23 @@ const CheckoutPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        const order = {
+            id: new Date().getTime(),
+            date: new Date().toLocaleString(),
+            total: total,
+            items: cartItems,
+            customer: formData,
+        };
+        dispatch(addOrder(order));
+        dispatch(clearCart());
         setSubmitted(true);
     };
 
     if (submitted) {
         return (
             <Container sx={{ marginTop: 4 }}>
-                <Typography variant="h4">Дякуємо за замовлення!</Typography>
-                <Typography variant="body1">Ваше замовлення успішно оформлено.</Typography>
+                <Typography variant="h4">Thank you for your order!</Typography>
+                <Typography variant="body1">Your order has been successfully placed..</Typography>
             </Container>
         );
     }

@@ -11,9 +11,12 @@ const Navbar = () => {
     return (
         <AppBar position="static">
             <Toolbar>
-                <Typography variant="h6" component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit', flexGrow: 1 }}>
+                <Typography variant="h6" component={Link} to="/" sx={{ textDecoration: 'none', color: 'inherit', flexGrow: 1 }}>
                     Internet Shop
                 </Typography>
+                <Button color="inherit" component={Link} to="/orders">
+                    My Orders
+                </Button>
                 <Button color="inherit" component={Link} to="/cart">
                     Cart&nbsp;
                     <Badge badgeContent={cartItemsCount} color="secondary" />
